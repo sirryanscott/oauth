@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="google-signin-client_id" content="284266559895-k9cs0t7o5854vrd0vrs93lmqpuc5ifvl.apps.googleusercontent.com">
+    <title>oauth</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    
+
+  </body>
+
+  <!-- script to initialize the gapi -->
+  <script src="https://apis.google.com/js/platform.js?onload=init"></script>
+
+  <script>
+    // script called to initialize gapi
+    function init(){
+      console.log("initialized")
+      gapi.load('auth2', function() {
+        gapi.auth2.init()
+      })
+    }
+
+    // global function called when user clicks "sign in"
+    function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+
+      // update the "name" element upon successful login
+      document.getElementById("name").innerHTML = profile.getName() + " is logged in."
+    }
+
+  </script>
+</html>
